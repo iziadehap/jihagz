@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jihagz/features/add_missing_place/screens/add_missing_place.dart';
-import 'package:jihagz/features/details/screens/details_screen.dart';
-import 'package:jihagz/features/form/form_ui/form_screen.dart';
-import 'package:jihagz/features/home/widgets/inclode_homeScreeen.dart';
-import 'package:jihagz/features/login/login_front/login_front_screen.dart';
-import 'package:jihagz/features/settings/screens/setting_screen.dart';
+import 'package:jihagz/features/add_missing_place/presentation/screens/add_missing_place.dart';
+import 'package:jihagz/features/details/presentation/screens/details_screen.dart';
+import 'package:jihagz/features/form/presentation/form_screen.dart';
+import 'package:jihagz/features/home/presentation/widgets/inclode_homeScreeen.dart';
+import 'package:jihagz/features/login/presentation/login_front_screen.dart';
+import 'package:jihagz/features/settings/presentation/screens/setting_screen.dart';
 
 class AppRoutes {
   static const String LOGIN = '/login';
