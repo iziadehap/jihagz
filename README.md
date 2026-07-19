@@ -1,133 +1,208 @@
-# Jihagz — حجز
 
-**تطبيق لحجز واستكشاف الملاعب الرياضية في مكان واحد**
+# Jihagz
 
----
+Jihagz is a real-world sports logistics and booking platform built to centralize the exploration and reservation of sports fields. It digitizes the fragmented process of finding and booking sports venues (such as Football pitches, Padel courts, and Tennis courts) into a single, unified mobile interface.
 
-## المشكلة
+The application replaces informal coordination methods (direct phone calls, scattered social media messages, and manual availability checks) with an automated, location-aware platform used by athletes and venue owners.
 
-حجز الملاعب الرياضية غالبًا **مش منظم**: اللي عايز يحجز ملعب (زي ملعب فادي مثلًا) مش بيعرف **الوقت الفاضي فيه إمتى**. ف بيضطر يتصل أو يسأل أو يدور بنفسه على مكان تاني لو الملعب مش فاضي.
+## Project Overview
 
-## الحل
+This system is designed to streamline the athletic booking ecosystem by removing the friction of finding open field slots.  
+The application manages the entire exploration and submission lifecycle:
 
-**Jihagz** بيجمع كل الملاعب المتاحة في تطبيق واحد، عشان:
+- **Discover Venues:** Users browse nearby sports facilities filtered by athletic categories.
+- **Real-Time Location Insights:** The application calculates distance metrics to prioritize closest available options.
+- **Crowdsourced Database Expansion:** Users can submit unlisted venues to organically grow the platform's reach.
+- **Detailed Analytics & Reviews:** Venues showcase real-time crowdsourced ratings, pricing structures, and geographic parameters.
 
-- **تشوف كل الملاعب** القريبة منك أو حسب نوع الرياضة (كرة قدم، بادل، تنس، وغيرها)
-- **تعرف تفاصيل كل ملعب**: الصور، السعر، رقم التليفون، الموقع على الخريطة، والتقييم
-- **تلاقي بديل بسرعة** لو ملعب فادي (أو أي ملعب تاني) مش فاضي — من غير ما تدور لوحدك
-- **تضيف ملعب ناقص** لو مش موجود في القائمة
+The platform focuses on high operational visibility, crisp map-based delivery, and rapid booking alternatives when a primary venue is occupied.
 
-> الهدف: تسهيل الحجز وتوحيد كل الملاعب في مكان واحد بدل التشتت والاتصالات المتكررة.
+## Problem Statement
 
----
+Many athletes and sports enthusiasts rely on informal, decentralized methods to book courts:
 
-## المميزات الحالية
+- Direct phone calls to venue handlers
+- Disorganized WhatsApp coordination
+- Unpredictable manual scheduling checks
 
-| الميزة | الوصف |
-|--------|--------|
-| 🔐 تسجيل الدخول | تسجيل دخول بحساب Google عبر Supabase |
-| 👤 الملف الشخصي | إكمال البيانات (الاسم، التليفون، العمر، النوع) |
-| 🏟️ استكشاف الملاعب | عرض كل الملاعب حسب الفئة الرياضية |
-| 📍 الأقرب إليك | حساب المسافة من موقعك وعرض أقرب 3 ملاعب |
-| 🔍 تفاصيل الملعب | صور، خريطة، سعر، تليفون، وتقييمات |
-| ⭐ التقييم | تقييم الملاعب ومشاهدة توزيع التقييمات |
-| ➕ إضافة مكان ناقص | إرسال ملعب جديد (اسم، صور، موقع) للمراجعة |
-| 💾 تخزين محلي | حفظ بيانات الملاعب مؤقتًا لتحميل أسرع |
-| 🌙 واجهة داكنة | تصميم رياضي بألوان أزرق وأخضر |
+This fragmentation leads to several common challenges:
 
-## قيد التطوير
+- Total lack of visibility into real-time slot availability
+- High friction when a target field is fully booked, with no immediate alternative viewable
+- Disorganized venue metadata (hidden pricing, missing contact info, vague locations)
+- Travel inefficiencies due to lack of distance calculations
 
-- **حجز مباشر** (زر Book Now)
-- **بحث** بالاسم أو المنطقة
-- **فلتر بالخريطة**
-- **اتصال / واتساب** من صفحة التفاصيل
+**Jihagz** eliminates these bottlenecks by centralizing stadium discovery, proximity calculations, and explicit venue asset tracking in one app.
 
----
+## Key Features
 
-## التقنيات المستخدمة
+### Sports Exploration Engine
 
-- **Flutter** — تطبيق موبايل (Android & iOS)
-- **GetX** — إدارة الحالة والتنقل
-- **Supabase** — قاعدة البيانات والمصادقة
-- **Google Sign-In** — تسجيل الدخول
-- **flutter_map** — عرض الخريطة
-- **location** — تحديد موقع المستخدم
-- **SharedPreferences** — التخزين المحلي
+- Categorized browsing for major sports categories (Football, Padel, Tennis, and Custom variations).
+- Advanced venue profiling including high-quality photo galleries, verified contact numbers, and explicit pricing structures.
 
----
+### Proximity & Mapping System
 
-## هيكل المشروع
+- Automatic client-side GPS location detection.
+- Dynamic distance matrices evaluating physical distance to automatically bubble up the **top 3 closest venues**.
+- Visual mapping integration with precise pinpoint coordinates for seamless navigation.
 
-```
-lib/
-├── core/                    # إعدادات التطبيق، المسارات، النماذج
-├── features/
-│   ├── home/                # الشاشة الرئيسية وقائمة الملاعب
-│   ├── details/             # تفاصيل الملعب والتقييم
-│   ├── login/               # تسجيل الدخول
-│   ├── form/                # إكمال الملف الشخصي
-│   ├── add_missing_place/   # إضافة ملعب ناقص
-│   └── settings/            # الإعدادات
-└── main.dart
-```
+### User Lifecycle & Social Proof
+
+- Secure single-sign-on (SSO) authentication.
+- Comprehensive user onboarding forms capturing profiling attributes (Name, Phone, Age, and Gender).
+- Deep breakdown of user ratings featuring distribution metrics to guarantee crowd-sourced validation.
+
+### Decentralized Venue Ingestion
+
+- Crowdsourced reporting tools allowing users to submit missing sports clubs (attaching names, imagery, and accurate map markers) for systematic admin approval.
+
+### Performance & Caching
+
+- Local persistence caching mechanisms ensuring instant sub-second page loads and offline data durability.
 
 ---
 
-## التشغيل
+## System Architecture
 
-### المتطلبات
+The project is structured using an organized, predictable architectural flow designed to maintain clean separation of concerns and high scalability.
 
-- Flutter SDK `^3.8.1`
-- حساب Supabase (مُعد مسبقًا في المشروع)
-- إعداد Google Sign-In لـ Android و iOS
-
-### الأوامر
+### Project Layout
 
 ```bash
-# تثبيت الحزم
+lib/
+├── core/                  # Shared configurations, app routing, common models, and utilities
+├── features/              # Domain-isolated functional modules
+│   ├── home/              # Field exploration dashboard and core listing feeds
+│   ├── details/           # Venue metadata profiling, map rendering, and review pipelines
+│   ├── login/             # Authentication gateways and SSO logic
+│   ├── form/              # Profile configuration and user data ingestion
+│   ├── add_missing_place/ # Crowd-sourced venue reporting tools
+│   └── settings/          # Local preferences and client configurations
+└── main.dart              # Application initialization vector
+```
+````
+
+### Architecture Layers
+
+- **Presentation Layer:** Flutter UI design layouts optimized with Material 3 patterns, utilizing **GetX** controllers for structural reactive state management and predictable navigation routing.
+- **Domain Layer:** Decoupled business rules, validation models, and explicit core application logic parameters.
+- **Data Layer:** High-performance data persistence routing connecting remote **Supabase PostgreSQL** schemas to local client engines via optimized **SharedPreferences** key-value caching.
+
+---
+
+## Engineering Highlights
+
+- **Clean Layered Feature Layout:** Modular codebase built for feature isolation, minimizing code regression during platform scale.
+- **Reactive State Tracking:** Ultra-lean reactive state management and route handling using GetX dependencies.
+- **Secure Cloud Backend Integration:** Real-time data streams and cloud management utilizing Supabase infrastructure.
+- **Geospatial Proximity Calculations:** Client-side GPS spatial lookups calculating nearby field clusters automatically.
+- **Robust Relational Schemas:** Strict database integrity and relationship modeling with PostgreSQL architectures.
+
+---
+
+## Tech Stack
+
+### Mobile Frontend
+
+- **Framework:** Flutter (Material 3 UI Architecture)
+- **State Management & Routing:** GetX
+
+### Backend & Infrastructure
+
+- **Cloud Platform:** Supabase
+- **Database Engine:** PostgreSQL
+- **Authentication:** Google Sign-In SDK / Supabase Auth
+
+### Geospatial & Mapping
+
+- `flutter_map`
+- `location`
+
+### Storage & Utilities
+
+- `SharedPreferences` (Local metadata caching)
+
+---
+
+## Database Schema (Supabase)
+
+The core relational layout relies on heavily optimized tables enforcing strict database constraints:
+
+| Table Name              | Primary Purpose                                                                                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sports_clubs_verified` | Authoritative verified stadium listings containing name, sport type, geographical coordinates, pricing tiers, media links, and aggregate score ratings. |
+| `profiles`              | Demographic user data mapped explicitly to unique authentication tokens.                                                                                |
+| `stadium_ratings`       | Relational review transactions tracking explicit score weights left by authenticated platform users.                                                    |
+
+---
+
+## Screenshots
+
+| Authentication UI                                         | Field Exploration                                          |
+| --------------------------------------------------------- | ---------------------------------------------------------- |
+| ![Login UI](jihagz/screenshots/Screenshot_1784500552.png) | ![Home Feed](jihagz/screenshots/Screenshot_1784500558.png) |
+
+| Stadium Profiling                                             | Crowdsourced Submission                                           |
+| ------------------------------------------------------------- | ----------------------------------------------------------------- |
+| ![Details View](jihagz/screenshots/Screenshot_1784500563.png) | ![Add Missing Form](jihagz/screenshots/Screenshot_1784500572.png) |
+
+---
+
+## Getting Started & Execution
+
+### Prerequisites
+
+- Flutter SDK `^3.8.1`
+- Active Supabase project instance
+- Configured Google Developer Console OAuth credentials (for Android & iOS SHA signing)
+
+### Installation & Run Steps
+
+```bash
+# Fetch and install all project dependencies
 flutter pub get
 
-# تشغيل على Android أو iOS
+# Launch the application on your active connected device or emulator
 flutter run
 
-# بناء APK
+# Compile a production-ready release APK
 flutter build apk
 ```
 
-### iOS
+**iOS Specific Setup**
 
 ```bash
-cd ios && pod install && cd ..
+cd ios
+pod install
+cd ..
 flutter run
 ```
 
 ---
 
-## قاعدة البيانات (Supabase)
+## Future Enhancements
 
-| الجدول | الاستخدام |
-|--------|-----------|
-| `sports_clubs_verified` | الملاعب المعتمدة (اسم، نوع، موقع، سعر، صور، تقييم) |
-| `profiles` | بيانات المستخدمين |
-| `stadium_ratings` | تقييمات المستخدمين للملاعب |
-
----
-
-## أنواع الرياضات المدعومة
-
-- Football (كرة قدم)
-- Padel (بادل)
-- Tennis (تنس)
-- Custom (أخرى)
+- **Direct Slot Booking Pipeline:** Seamless integration of an interactive "Book Now" interface directly within the app details view.
+- **Advanced Query Engine:** Multi-parameter search utilities filtering venues by granular regions or text queries.
+- **Map-View Filter Matrix:** Interactive spatial search allowing users to find available spots directly by scanning across a map view.
+- **Direct Communication Gateways:** Instant, context-aware click-to-call and WhatsApp API integrations for immediate field manager communications.
 
 ---
 
-## الترخيص
+## Author
 
-مشروع خاص — `publish_to: "none"`
+- **GitHub:** [iziadehap](https://github.com/iziadehap)
+- **LinkedIn:** [linkedin.com/in/iziadehap](https://linkedin.com/in/iziadehap)
 
 ---
 
-## فريق التطوير
+## License
 
-Jihagz — نسخة `1.0.0`
+This project is shared strictly for portfolio presentation and demonstration purposes.
+
+`publish_to: "none"`
+
+```
+
+```
