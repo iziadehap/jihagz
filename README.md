@@ -136,13 +136,11 @@ The core relational layout relies on heavily optimized tables enforcing strict d
 
 ---
 
-
 # Screenshots
 
-|                                             |                                                   |                                                |                                               |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| ![](app%screenshots/Screenshot_1784500552.jpg) | ![](app%screenshots/Screenshot_1784500558.jpg) | ![](app%screenshots/Screenshot_1784500563.jpg) | ![](app%screenshots/Screenshot_1784500572.jpg) |
-
+| Authentication | Field Exploration | Stadium Details | Add Missing Place |
+| ---------------- | ---------------- | ---------------- | ---------------- |
+| ![](screenshots/Screenshot_1784500552.png) | ![](screenshots/Screenshot_1784500558.png) | ![](screenshots/Screenshot_1784500563.png) | ![](screenshots/Screenshot_1784500572.png) |
 ---
 
 
