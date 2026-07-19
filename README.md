@@ -196,8 +196,3 @@ flutter run
 
 This project is shared strictly for portfolio presentation and demonstration purposes.
 
-`publish_to: "none"`
-
-```
-
-```
