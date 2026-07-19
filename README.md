@@ -136,17 +136,15 @@ The core relational layout relies on heavily optimized tables enforcing strict d
 
 ---
 
-## Screenshots
 
-| Authentication UI                                         | Field Exploration                                          |
-| --------------------------------------------------------- | ---------------------------------------------------------- |
-| ![Login UI](jihagz/screenshots/Screenshot_1784500552.png) | ![Home Feed](jihagz/screenshots/Screenshot_1784500558.png) |
+# Screenshots
 
-| Stadium Profiling                                             | Crowdsourced Submission                                           |
-| ------------------------------------------------------------- | ----------------------------------------------------------------- |
-| ![Details View](jihagz/screenshots/Screenshot_1784500563.png) | ![Add Missing Form](jihagz/screenshots/Screenshot_1784500572.png) |
+|                                             |                                                   |                                                |                                               |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| ![](app%screenshots/Screenshot_1784500552.jpg) | ![](app%screenshots/Screenshot_1784500558.jpg) | ![](app%screenshots/Screenshot_1784500563.jpg) | ![](app%screenshots/Screenshot_1784500572.jpg) |
 
 ---
+
 
 ## Getting Started & Execution
 
