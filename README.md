@@ -138,7 +138,7 @@ The core relational layout relies on heavily optimized tables enforcing strict d
 
 # Screenshots
 
-| Authentication | Field Exploration | Stadium Details | Add Missing Place |
+| screen1 | screen2 | screen3 | screen4 |
 | ---------------- | ---------------- | ---------------- | ---------------- |
 | ![](screenshots/Screenshot_1784500552.png) | ![](screenshots/Screenshot_1784500558.png) | ![](screenshots/Screenshot_1784500563.png) | ![](screenshots/Screenshot_1784500572.png) |
 ---
