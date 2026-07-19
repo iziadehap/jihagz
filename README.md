@@ -69,7 +69,7 @@ The project is structured using an organized, predictable architectural flow des
 
 ### Project Layout
 
-```bash
+
 lib/
 ├── core/                  # Shared configurations, app routing, common models, and utilities
 ├── features/              # Domain-isolated functional modules
@@ -80,8 +80,7 @@ lib/
 │   ├── add_missing_place/ # Crowd-sourced venue reporting tools
 │   └── settings/          # Local preferences and client configurations
 └── main.dart              # Application initialization vector
-```
-````
+
 
 ### Architecture Layers
 
