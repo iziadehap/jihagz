@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:get/get.dart';
+import 'package:jihagz/core/mock_data/demo_mode.dart';
+import 'package:jihagz/core/mock_data/mock_data.dart';
 import 'package:jihagz/core/my_snackbar.dart';
 import 'package:jihagz/core/supabase_model/sports_clubs_verified.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,6 +25,11 @@ class HomeController extends GetxController {
 
   void checkLocalAndGetData() async {
     isShimmer.value = true;
+    if (kDemoMode) {
+      _loadMockStadiums();
+      isShimmer.value = false;
+      return;
+    }
     // await fromServer();
     final localData = await loadStadiumsFromLocal();
     // if (localData == null) {
@@ -37,7 +44,19 @@ class HomeController extends GetxController {
     isShimmer.value = false;
   }
 
+  void _loadMockStadiums() {
+    allStadiumsFiltered =
+        MockData.getStadiumsForCategory(selectedCategory.value);
+    nearbyStadiums = MockData.getNearbyStadiums(allStadiumsFiltered);
+    update();
+  }
+
   Future<void> getNarbyStadiums() async {
+    if (kDemoMode) {
+      nearbyStadiums = MockData.getNearbyStadiums(allStadiumsFiltered);
+      update();
+      return;
+    }
     // Get user location
     Location location = Location();
     bool serviceEnabled = await location.serviceEnabled();
@@ -162,6 +181,15 @@ class HomeController extends GetxController {
       ).map((e) => SportsClubsVerified.fromJson(e)).toList();
       return List<Map<String, dynamic>>.from(response);
     } catch (e) {
+      final mockData =
+          MockData.getStadiumMapsForCategory(selectedCategory.value);
+      if (mockData.isNotEmpty) {
+        allStadiumsFiltered =
+            mockData.map((e) => SportsClubsVerified.fromJson(e)).toList();
+        nearbyStadiums = MockData.getNearbyStadiums(allStadiumsFiltered);
+        update();
+        return mockData;
+      }
       mySnackbar(
         'Error',
         'Failed to load stadiums from server',

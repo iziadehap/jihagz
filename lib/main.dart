@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jihagz/core/appRoutes.dart';
+import 'package:jihagz/core/mock_data/demo_mode.dart';
 import 'package:jihagz/features/settings/data/data_source/setting_controller.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,15 @@ const supabaseAnonKey =
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
+  if (!kDemoMode) {
+    await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
+  } else {
+    try {
+      await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
+    } catch (e) {
+      debugPrint('Supabase init skipped in demo mode: $e');
+    }
+  }
   Get.put(SettingController());
   runApp(MyApp());
 }
@@ -37,13 +46,22 @@ class MyApp extends StatelessWidget {
           foregroundColor: appCore.primaryColor,
         ),
       ),
-      initialRoute: _checkIfUserIsLoggedIn() ? AppRoutes.HOME : AppRoutes.LOGIN,
+      initialRoute: _resolveInitialRoute(),
       getPages: getPages,
     );
   }
 
+  String _resolveInitialRoute() {
+    if (kDemoMode) return AppRoutes.HOME;
+    return _checkIfUserIsLoggedIn() ? AppRoutes.HOME : AppRoutes.LOGIN;
+  }
+
   bool _checkIfUserIsLoggedIn() {
-    final user = Supabase.instance.client.auth.currentUser;
-    return user != null;
+    try {
+      final user = Supabase.instance.client.auth.currentUser;
+      return user != null;
+    } catch (e) {
+      return false;
+    }
   }
 }
